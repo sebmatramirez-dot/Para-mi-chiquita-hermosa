@@ -1,0 +1,240 @@
+/* GENERAL */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: #FFEFC5;
+    color: #5A3A1E;
+    overflow: hidden;
+}
+
+/* MARCO PRINCIPAL */
+.page-frame {
+    width: 95%;
+    height: 95vh;
+    margin: 2.5vh auto;
+    background: #FFF7D9;
+    border-radius: 30px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 20px;
+}
+
+/* USAGI */
+.usagi-top img {
+    width: 120px;
+    animation: fadeIn 1s forwards;
+    opacity: 0;
+}
+
+/* CONTENIDO CENTRAL */
+.content-wrapper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+    animation: fadeIn 1s forwards .3s;
+    opacity: 0;
+}
+
+.subtitle {
+    opacity: 0;
+    animation: fadeIn 1s forwards .5s;
+}
+
+.envelope-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.envelope-img {
+    width: 300px;
+    cursor: pointer;
+    transition: 0.5s;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.15));
+}
+.envelope-img:hover { transform: scale(1.05); }
+
+.envelope-opening {
+    transform: scale(0.8) translateY(-40px) rotateX(25deg);
+    opacity: 0;
+}
+
+/* PURINS PEQUEÑOS FLOTANDO */
+.floating-purins img {
+    width: 80px;
+    position: absolute;
+    opacity: 0.9;
+}
+
+.p1 { top: 15%; left: 5%; animation: flotarSide 4s infinite ease-in-out; }
+.p2 { top: 40%; right: 8%; animation: flotarSide 5s infinite ease-in-out; }
+.p3 { top: 70%; left: 10%; animation: flotarSide 3.5s infinite ease-in-out; }
+
+@keyframes flotarSide {
+    0%   { transform: translateX(0) translateY(0); }
+    50%  { transform: translateX(12px) translateY(-8px); }
+    100% { transform: translateX(0) translateY(0); }
+}
+
+/* BOTÓN SORPRESA */
+.surprise-btn {
+    margin-top: 20px;
+    background: #FFBBD8;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 14px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.surprise-btn:hover { transform: scale(1.1); }
+
+/* CARTA */
+.letter-panel {
+    position: fixed;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 680px;
+    height: 85%;
+    background: #fffef8;
+    border-radius: 22px;
+    border: 3px dashed #e6c87d;
+    padding: 25px;
+    overflow-y: auto;
+    box-shadow: 0 0 25px rgba(0,0,0,0.2);
+    transition: top 0.8s ease;
+    z-index: 20;
+}
+
+.letter-panel.open {
+    top: 7%;
+}
+
+.close-letter {
+    float: right;
+    border: none;
+    background: #f7b2c4;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.hachiware-in-letter {
+    margin-top: 40px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.8s ease;
+}
+.letter-panel.open .hachiware-in-letter {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.final-message {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 24px;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: 1s ease;
+}
+.letter-panel.open .final-message {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* CORAZONES */
+#hearts {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.heart {
+    position: absolute;
+    bottom: -20px;
+    color: #ff87b5;
+    animation: rise 4s linear infinite;
+    opacity: 0.9;
+}
+
+@keyframes fadeIn { to { opacity: 1; } }
+
+@keyframes rise {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-120vh); }
+}
+/* ESCENA CHIIKAWA */
+.scene-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ease;
+}
+
+.scene-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.scene-content {
+    text-align: center;
+    animation: popUp .6s ease;
+}
+
+.chiikawa-dance {
+    width: 260px;
+    animation: bounceDance 2s infinite ease-in-out;
+    border-radius: 20px;
+}
+
+.close-scene-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #FFBBD8;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.close-scene-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes popUp {
+    0% { transform: scale(0.6); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes bounceDance {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0); }
+}
